@@ -425,9 +425,9 @@ __hidden__ char _DYNAMIC;
 int stackgap(int argc,char* argv[],char* envp[]);
 int stackgap(int argc,char* argv[],char* envp[]) {
 #if defined(WANT_STACKGAP) || defined(WANT_SSP) || defined(WANT_TLS)
+  long* auxvec=(long*)envp;
   char const * rand=(char*)&auxvec;
   char* tlsdata;
-  long* auxvec=(long*)envp;
 #endif
 #ifndef WANT_ELFINFO
   while (*auxvec) ++auxvec;			/* skip envp to get to auxvec */
